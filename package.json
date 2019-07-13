@@ -1,7 +1,7 @@
 {
   "name": "@ambroise-rabier/ts-utils",
   "version": "1.0.0",
-  "description": "Personal small re-usable typescripts snippets. ",
+  "description": "Personal small re-usable typescripts snippets.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,7 +9,7 @@
     "pack": "npm pack",
     "build": "rmdir /s /Q .\\dist && tsc",
     "build-linux": "rm -rf ./dist && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "files": [
     "dist"
