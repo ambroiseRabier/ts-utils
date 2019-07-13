@@ -1,0 +1,27 @@
+{
+  "name": "@ambroise-rabier/ts-utils",
+  "version": "1.0.0",
+  "description": "Personal small re-usable typescripts snippets. ",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "publish": "npm publish --access public",
+    "build": "rmdir /s /Q .\\dist && tsc && copy .\\README.md .\\dist\\README.md",
+    "build-linux": "rm -rf ./dist && tsc && cp ./README.md ./dist/README.md",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ambroiseRabier/ts-utils.git"
+  },
+  "keywords": [
+    "typescript",
+    "utils"
+  ],
+  "author": "Ambroise Rabier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ambroiseRabier/ts-utils/issues"
+  },
+  "homepage": "https://github.com/ambroiseRabier/ts-utils#readme"
+}
