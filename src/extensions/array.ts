@@ -7,15 +7,37 @@ declare global {
 
     sortAZ(getStrField: (e: T) => string): Array<T>;
 
+    /**
+     * Find and remove an element. Original array is modified.
+     * @param element
+     */
     remove(element: T): T;
 
     flatten(): T;
 
-    union(array: Array<T>): Array<T>;
+    /**
+     * Return an array with keys that a least one of the array has not.
+     * @param array
+     */
+    innerJoin(array: Array<T>): Array<T>;
 
-    intersect(array: Array<T>): Array<T>;
+    /**
+     * Return values that are only in this.
+     * @param array
+     */
+    leftOuterJoinNotNull(array: Array<T>): Array<T>;
 
-    removeNull(): Array<T>;
+    /**
+     * Combine and remove duplicate.
+     */
+    inverseInnerJoin(array: Array<T>): Array<T>;
+
+    /**
+     * Remove duplicate.
+     */
+    removeDuplicate(): Array<T>;
+
+    removeNullUndef(): Array<T>;
   }
 }
 
@@ -44,14 +66,52 @@ Array.prototype.flatten = function <T>(this: Array<T[]>): T {
 
 Array.prototype.isArray = true;
 
-Array.prototype.union = function <T>(this: T[], array: T[]): T[] {
-  return this.filter(value => -1 === array.indexOf(value));
-};
-
-Array.prototype.intersect = function <T>(this: T[], array: T[]): T[] {
+Array.prototype.innerJoin = function <T>(this: T[], array: T[]): T[] {
   return this.filter(value => -1 !== array.indexOf(value));
 };
 
-Array.prototype.removeNull = function <T>(this: T[]): T[] {
+Array.prototype.leftOuterJoinNotNull = function <T>(this: T[], array: T[]): T[] {
+  return this.filter(value => -1 === array.indexOf(value));
+};
+
+// O(1) or O(n) worst case for hashmap and O(n) for js Array.filter and for loop, so O(n) complexity.
+Array.prototype.inverseInnerJoin = function <T>(this: T[], array: T[]): T[] {
+  const hashMap1: any = {};
+  const hashMap2: any = {};
+
+  for (let e of this) {
+    if (!hashMap1[e]) {
+      hashMap1[e] = true;
+    }
+  }
+
+  for (let e of array) {
+    if (!hashMap2[e]) {
+      hashMap2[e] = true;
+    }
+  }
+
+  const unique1 = this.filter(e => !hashMap2[e]);
+  const unique2 = array.filter(e => !hashMap1[e]);
+  const result = unique1.concat(unique2);
+
+  return result;
+};
+
+Array.prototype.removeDuplicate = function <T>(this: T[]): T[] {
+  const hashMap: any = {};
+  const result: T[] = [];
+
+  for (let e of this) {
+    if (!hashMap[e]) {
+      result.push(e);
+      hashMap[e] = true;
+    }
+  }
+
+  return result;
+};
+
+Array.prototype.removeNullUndef = function <T>(this: T[]): T[] {
   return this.filter(e => e !== null && e !== undefined);
 };
