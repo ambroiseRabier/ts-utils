@@ -1,1 +1,1 @@
-export {sayHello, sayGoodbye} from './lib/hello-world';
+export {sayHello, sayGoodbye, ssayGoodbye} from './lib/hello-world';
