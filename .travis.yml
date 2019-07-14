@@ -2,18 +2,20 @@ language: node_js
 
 node_js:
   - stable
-#test
-cache:
-  directories:
-    - "$HOME/.npm"
 
 install:
   - npm ci
 
-script:
-  - npm run build-linux
-  - npm run test
+cache:
+  directories:
+    - "$HOME/.npm"
+
+jobs:
+  include:
+    - stage: compile
+      script: npm run build-linux
+    - stage: test
+      script: npm run test
 
 after_script:
   - npm run ci-process-cover
-
