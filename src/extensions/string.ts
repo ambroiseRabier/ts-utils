@@ -12,21 +12,16 @@ declare global {
   interface String {
     /**
      * Should be flagged with global. Unless you want only first match.
+     * @example whiteList number with `/\d+/g`
      * @param {RegExp} regex
      * @returns {string}
      */
     whiteList(regex: RegExp): string;
 
-
     /**
      * @returns {string} An easy to use url, similar to when you create a github project.
      */
     toUrl(): string;
-
-    /**
-     * @returns {string} an url friendly string
-     */
-    makeUrlFriendly(): string;
 
     /**
      * Remove accent like `àé` to obtain `ae`.
@@ -43,15 +38,6 @@ declare global {
 
 String.prototype.whiteList = function(this: string, regex: RegExp) {
   return (this.match(regex) || []).join('');
-};
-
-
-String.prototype.makeUrlFriendly = function(this: string) {
-  return this
-    .trim()
-    .toLocaleLowerCase()
-    .replace(new RegExp('[\-|\ |\_|\.|\,|\+]+', 'g'), '-')
-    .whiteList(new RegExp('[0-9]|[a-z]|[A-Z]|-', 'g'));
 };
 
 String.prototype.toUrl = function(this: string) {
