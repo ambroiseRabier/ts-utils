@@ -1,9 +1,16 @@
-language : node_js
-node_js :
+language: node_js
+node_js:
   - stable
 install:
   - npm install
-script:
-  - npm run test
+
 after_script:
-  - npm run ci-process-cover
+
+jobs:
+  include:
+    - stage: Compile
+      script: npm run build-linux
+    - stage: Unit tests
+      script: npm run test
+      after_script: npm run ci-process-cover
+
