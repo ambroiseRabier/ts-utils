@@ -9,7 +9,8 @@
     "pack": "npm pack",
     "build": "rmdir /s /Q .\\dist && tsc",
     "build-linux": "rm -rf ./dist && tsc",
-    "test": "jest"
+    "test": "jest",
+    "cover": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "files": [
     "dist"
@@ -30,6 +31,9 @@
   "homepage": "https://github.com/ambroiseRabier/ts-utils#readme",
   "devDependencies": {
     "@types/jest": "^24.0.15",
-    "jest": "^24.8.0"
+    "coveralls": "^3.0.5",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
   }
 }
