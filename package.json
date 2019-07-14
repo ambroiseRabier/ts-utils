@@ -10,7 +10,7 @@
     "build": "rmdir /s /Q .\\dist && tsc",
     "build-linux": "rm -rf ./dist && tsc",
     "test": "jest",
-    "ci-process-cover": "coveralls < coverage/lcov.info"
+    "ci-process-cover": "cat coverage/lcov.info | coveralls"
   },
   "files": [
     "dist"
