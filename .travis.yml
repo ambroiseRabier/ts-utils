@@ -8,13 +8,16 @@ node_js:
 install:
   - npm ci
 
-
-jobs:
-  include:
-    - stage: Compile
-      script: npm run build-linux
-    - stage: Test
-      script: npm run test
+script:
+  - npm run build-linux
+  - npm run test
 
 after_script:
   - npm run ci-process-cover
+
+deploy:
+  provider: npm
+  email: $NPM_PUBLIC_EMAIL
+  api_key: $NPM_API_KEY
+  skip_cleanup: true
+  on: deploy-npm-release
