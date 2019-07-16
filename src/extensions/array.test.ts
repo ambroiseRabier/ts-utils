@@ -21,32 +21,48 @@ test('sortAZ', () => {
   expect(sorted).toStrictEqual(expected);
 });
 
-
-test('remove', () => {
+test('remove -> return value', () => {
   const array = [1,2,3];
   const removed = array.remove(2);
+
   expect(removed).toBe(2);
+});
+
+test('remove -> modify original array', () => {
+  const array = [1,2,3];
+  const removed = array.remove(2);
+
   expect(array).toStrictEqual([1,3])
 });
 
-
-test('flatten', () => {
+test('flatten -> do not change original array', () => {
   const array = [[1],[2]];
   const flattened = array.flatten();
 
-  // should not have changed entry array
   expect(array).toStrictEqual([[1],[2]]);
-
-  // new array is flattened
-  expect(flattened).toStrictEqual([1,2]);
 });
 
+test('flatten -> return value', () => {
+  const array = [[1],[2]];
+  const flattened = array.flatten();
+
+  expect(flattened).toStrictEqual([1,2]);
+});
 
 test('isArray', () => {
   const array: any[] = [];
   expect(array.isArray).toBeTruthy();
 });
 
+test('leftOuterJoinNotNull', () => {
+  const array1: any[] = [1,2];
+  const array2: any[] = [0];
+  const array3: any[] = [0,1];
+  expect(array1.leftOuterJoinNotNull(array2)).toStrictEqual([1,2]);
+  expect(array2.leftOuterJoinNotNull(array1)).toStrictEqual([0]);
+  expect(array3.leftOuterJoinNotNull(array2)).toStrictEqual([1]);
+  expect(array1.leftOuterJoinNotNull(array3)).toStrictEqual([2]);
+});
 
 test('leftOuterJoinNotNull', () => {
   const array1: any[] = [1,2];
