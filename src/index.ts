@@ -2,8 +2,15 @@ import './extensions/array';
 import './extensions/string';
 
 import {nameof} from './lib/nameof';
-import {nameOfConstructor} from './lib/name-of-constructor';
+import {AjaxStatus} from './lib/ajax-status';
+import {isMobile} from './lib/is-mobile';
+import {KeyEvents} from './lib/key-events';
+import {YoutubeUtils} from './lib/youtube.utils';
 
-export {nameof, nameOfConstructor};
-
-// constructor.name, so simply !
+export {
+  AjaxStatus,
+  isMobile,
+  KeyEvents,
+  YoutubeUtils,
+  nameof,
+};
