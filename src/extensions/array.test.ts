@@ -7,8 +7,10 @@ test('sortAZ', () => {
     {name: 'd'},
     {name: 'c'},
     {name: 'a'},
+    {name: 'a'},
   ];
-  const nestedSorted = [
+  const expected = [
+    {name: 'a'},
     {name: 'a'},
     {name: 'b'},
     {name: 'c'},
@@ -16,9 +18,7 @@ test('sortAZ', () => {
   ];
 
   const sorted = nestedUnSorted.sortAZ(e => e.name);
-  const strTested = sorted.map(e => e.name).join();
-  const strExpected = nestedSorted.map(e => e.name).join();
-  expect(strTested).toBe(strExpected);
+  expect(sorted).toStrictEqual(expected);
 });
 
 
@@ -77,6 +77,11 @@ test('inverseInnerJoin', () => {
   expect(array2.inverseInnerJoin(array1).sort()).toStrictEqual([0,1,2].sort());
   expect(array3.inverseInnerJoin(array1).sort()).toStrictEqual([0,2].sort());
   expect(array3.inverseInnerJoin(array2).sort()).toStrictEqual([1].sort());
+
+  // duplicated values
+  const array = [1,1];
+
+  expect(array.inverseInnerJoin(array)).toStrictEqual([]);
 });
 
 test('removeDuplicate', () => {
