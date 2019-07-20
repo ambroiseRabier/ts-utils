@@ -48,7 +48,8 @@ String.prototype.toUrl = function(this: string) {
     .replace(/['"()\[\]@!?#$%^&*><}{|;:’]+/g, '')
     .split(/[ \-_,.]+/)
     .filter(e => e.length !== 0) // dots at the end
-    .join('-');
+    .join('-')
+    .whiteList(/[a-z]|[A-Z]|[0-9]|-/g); // remove characters like `/`
 };
 
 String.prototype.removeDiacritics = function(this: string) {

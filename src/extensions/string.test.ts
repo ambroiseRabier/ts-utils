@@ -16,6 +16,18 @@ test('toUrl', () => {
   expect(str1.toUrl()).toBe(expected);
 });
 
+test('toUrl accept letter number and `-` if not at the end or start', () => {
+  const str1 = '-abcdefghijklmnopqrstuvwxyz-0123456789-';
+  const expected = 'abcdefghijklmnopqrstuvwxyz-0123456789';
+  expect(str1.toUrl()).toBe(expected);
+});
+
+test('toUrl remove `/` char', () => {
+  const str1 = '/abc/d/';
+  const expected = 'abcd';
+  expect(str1.toUrl()).toBe(expected);
+});
+
 test('removeDiacritics', () => {
   const str1 = 'éàèùâôûîêÂÊÛÔÎ';
   const expected = 'eaeuaouieAEUOI';
