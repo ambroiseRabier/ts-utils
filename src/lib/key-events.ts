@@ -1,3 +1,7 @@
+/**
+ * You can also use 'a'.charCodeAt(0)
+ * But you still need this constants for keys like Down or Enter.
+ */
 export enum KeyEvents {
   CANCEL = 3,
   HELP = 6,

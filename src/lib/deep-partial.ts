@@ -1,3 +1,6 @@
+/**
+ * Work like Partial, but allow to have partial nested objects also.
+ */
 export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Array<infer U>
     ? Array<DeepPartial<U>>
