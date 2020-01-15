@@ -21,7 +21,7 @@ declare global {
     /**
      * @returns {string} An easy to use url, similar to when you create a github project.
      */
-    toUrl(): string;
+    slugify(): string;
 
     /**
      * Remove accent like `àé` to obtain `ae`.
@@ -40,7 +40,7 @@ String.prototype.whiteList = function(this: string, regex: RegExp) {
   return (this.match(regex) || []).join('');
 };
 
-String.prototype.toUrl = function(this: string) {
+String.prototype.slugify = function(this: string) {
   return this
     .trim()
     .toLocaleLowerCase()

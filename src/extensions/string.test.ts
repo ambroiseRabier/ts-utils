@@ -10,22 +10,22 @@ test('whiteList', () => {
   expect(result2).toBe('');
 });
 
-test('toUrl', () => {
+test('slugify', () => {
   const str1 = 'D2.--é:&m';
   const expected = 'd2-em';
-  expect(str1.toUrl()).toBe(expected);
+  expect(str1.slugify()).toBe(expected);
 });
 
-test('toUrl accept letter number and `-` if not at the end or start', () => {
+test('slugify accept letter number and `-` if not at the end or start', () => {
   const str1 = '-abcdefghijklmnopqrstuvwxyz-0123456789-';
   const expected = 'abcdefghijklmnopqrstuvwxyz-0123456789';
-  expect(str1.toUrl()).toBe(expected);
+  expect(str1.slugify()).toBe(expected);
 });
 
-test('toUrl remove `/` char', () => {
+test('slugify remove `/` char', () => {
   const str1 = '/abc/d/';
   const expected = 'abcd';
-  expect(str1.toUrl()).toBe(expected);
+  expect(str1.slugify()).toBe(expected);
 });
 
 test('removeDiacritics', () => {
