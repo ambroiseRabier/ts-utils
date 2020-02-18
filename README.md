@@ -13,3 +13,7 @@ To have extensions available, add this line in your entrypoint (`main.ts`, `inde
 ```typescript
 import '@ambroise-rabier/ts-utils';
 ```
+
+## Content
+
+You are invited to browse `src/lib` and `src/extensions` folders. 

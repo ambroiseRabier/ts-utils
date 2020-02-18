@@ -1,26 +1,27 @@
 import './extensions/array';
 import './extensions/string';
 
-import {nameof} from './lib/nameof';
 import {AjaxStatus} from './lib/ajax-status';
-import {isMobile} from './lib/is-mobile';
 import {KeyEvents} from './lib/key-events';
 import {YoutubeUtils} from './lib/youtube.utils';
 import {DeepPartial} from './lib/deep-partial';
 import {HtmlInputType} from './lib/html-input.type';
+import {isMobile} from './lib/is-mobile';
+import {nameof} from './lib/nameof';
 import {keysOf} from './lib/keys-of';
 import {pathof} from './lib/pathof';
-
+import {pathOf} from './lib/path-of';
 
 
 export {
   AjaxStatus,
+  KeyEvents,
+  YoutubeUtils,
   DeepPartial,
   HtmlInputType,
   isMobile,
-  KeyEvents,
-  keysOf,
   nameof,
+  keysOf,
   pathof,
-  YoutubeUtils,
+  pathOf,
 };
