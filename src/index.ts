@@ -11,7 +11,7 @@ import {nameof} from './lib/nameof';
 import {keysOf} from './lib/keys-of';
 import {pathof} from './lib/pathof';
 import {pathOf} from './lib/path-of';
-
+import {Immutable} from './lib/immutable';
 
 export {
   AjaxStatus,
@@ -24,4 +24,5 @@ export {
   keysOf,
   pathof,
   pathOf,
+  Immutable,
 };
